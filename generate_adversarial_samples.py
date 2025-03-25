@@ -13,6 +13,7 @@ expected_features = model.input_shape[-1]  # Expected number of features
 # Binary cross-entropy loss (since it's a binary classifier)
 loss_object = tf.keras.losses.BinaryCrossentropy()
 
+#Uses FGSM (Fast Gradient Sign Method) to generate an adversarial example
 def create_adversarial_pattern(input_data, input_label):
     input_data = tf.Variable(input_data, dtype=tf.float32)  # Convert to TensorFlow variable
     input_label = tf.convert_to_tensor(input_label, dtype=tf.float32)
@@ -30,7 +31,7 @@ def create_adversarial_pattern(input_data, input_label):
     return signed_grad.numpy()  # Convert back to NumPy for further processing
 
 # Load malware dataset
-file_path = "/content/drive/My Drive/miniproj_sem6/malware_dataset.csv" # Update with actual file path
+file_path = "C:/Users/Abhinav/Desktop/college/YEAR 3/sem 6/mini proj/code/malware_dataset.csv" # Update with actual file path
 data = pd.read_csv(file_path)
 
 # Convert 'classific' column to numeric labels (1 for malware, 0 for benign)
@@ -70,6 +71,7 @@ X = scaler.fit_transform(X)
 test_sample = np.expand_dims(X[test_idx], axis=0).astype(np.float32)
 test_label = np.array([[y[test_idx]]], dtype=np.float32)  # Format for loss function
 
+#Generates an adversarial example by adding the perturbation scaled by epsilon
 # Test with different epsilon values
 epsilon_values = [10.0]
 for epsilon in epsilon_values:
@@ -86,4 +88,5 @@ for epsilon in epsilon_values:
     print("Adversarial Attack Results:")
     print(f"Original Prediction: {original_prediction[0][0]} (Correct Label: {test_label[0][0]})")
     print(f"After Attack Prediction: {adversarial_prediction[0][0]}")
+    # Prediction value 1 indicates a malware file, while 0 indicates a benign (non-malicious) file.
     print("====================================================================================================\n")
