@@ -11,8 +11,7 @@ import os
 tf.config.run_functions_eagerly(True)
 
 # Define paths
-original_model_path = "malware_classifier.h5"
-defended_model_path = "malware_classifier_defended.h5"
+original_model_path = "malware_classifier.keras"
 
 # Generate synthetic dataset
 def load_malware_dataset():
@@ -71,7 +70,7 @@ def adversarial_training(x_train, y_train):
 
     # Convert tensors to NumPy before fitting
     model.fit(x_train_adversarial.numpy(), y_train.numpy(), epochs=5, verbose=1)
-    model.save(defended_model_path)
+    model.save("malware_classifier_defended.keras")
     print("\nAdversarial Training Complete.")
 
 # Feature Squeezing (Reduce precision to remove small perturbations)
@@ -104,6 +103,7 @@ original_adv_acc = model.evaluate(x_test_adv, y_test, verbose=0)[1]
 original_squeezed_acc = model.evaluate(feature_squeeze(x_test), y_test, verbose=0)[1]
 
 defended_model = None
+defended_model_path = "malware_classifier_defended.keras"
 if os.path.exists(defended_model_path):
     defended_model = load_model(defended_model_path)
     defended_acc = defended_model.evaluate(x_test, y_test, verbose=0)[1]
