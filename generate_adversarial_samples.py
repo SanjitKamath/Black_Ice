@@ -1,7 +1,11 @@
+import os
 import numpy as np
 import tensorflow as tf
 import pandas as pd
 from tensorflow.keras.models import load_model
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '0'  # Suppress TensorFlow logging
+
 from sklearn.preprocessing import StandardScaler
 
 # Load the trained malware classifier
