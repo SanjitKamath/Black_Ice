@@ -1,11 +1,14 @@
+import os
 import numpy as np
 import tensorflow as tf
 import pandas as pd
 from tensorflow.keras.models import load_model
+
+
 from sklearn.preprocessing import StandardScaler
 
 # Load the trained malware classifier
-model = load_model("malware_classifier.h5")
+model = load_model("malware_classifier.keras")
 
 # Check expected input shape
 expected_features = model.input_shape[-1]  # Expected number of features
@@ -31,8 +34,7 @@ def create_adversarial_pattern(input_data, input_label):
     return signed_grad.numpy()  # Convert back to NumPy for further processing
 
 # Load malware dataset
-file_path = "C:/Users/Abhinav/Desktop/college/YEAR 3/sem 6/mini proj/code/malware_dataset.csv" # Update with actual file path
-data = pd.read_csv(file_path)
+data = pd.read_csv('D:\Mini Project Sem 6\Black_Ice\malware_dataset.csv')
 
 # Convert 'classific' column to numeric labels (1 for malware, 0 for benign)
 data["classification"] = data["classification"].map({"malware": 1, "benign": 0})
