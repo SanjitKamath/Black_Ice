@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ExternalLink } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { ArrowLeft, ExternalLink, Download } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function ResourcesPage() {
   return (
@@ -35,48 +35,21 @@ export default function ResourcesPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h3 className="font-medium">Intriguing properties of neural networks</h3>
+                  <h3 className="font-medium">
+                    Adversarial Attacks on Artificial Intelligence Systems: A Comprehensive Survey of Methods, Impacts,
+                    and Defences
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    Szegedy et al. (2014) - One of the first papers to identify the existence of adversarial examples
+                    A thorough analysis of adversarial attack methods, their effects on AI in various applications, and
+                    the state of defense tactics.
                   </p>
-                  <Link
-                    href="https://arxiv.org/abs/1312.6199"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <a
+                    href="/paper.pdf"
+                    download="Adversarial_Attacks_Survey.pdf"
                     className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline"
                   >
-                    Read Paper <ExternalLink className="h-3 w-3" />
-                  </Link>
-                </div>
-
-                <div>
-                  <h3 className="font-medium">Explaining and Harnessing Adversarial Examples</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Goodfellow et al. (2015) - Introduces the Fast Gradient Sign Method (FGSM)
-                  </p>
-                  <Link
-                    href="https://arxiv.org/abs/1412.6572"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                  >
-                    Read Paper <ExternalLink className="h-3 w-3" />
-                  </Link>
-                </div>
-
-                <div>
-                  <h3 className="font-medium">Towards Deep Learning Models Resistant to Adversarial Attacks</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Madry et al. (2018) - Introduces the PGD attack and adversarial training
-                  </p>
-                  <Link
-                    href="https://arxiv.org/abs/1706.06083"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                  >
-                    Read Paper <ExternalLink className="h-3 w-3" />
-                  </Link>
+                    Download Paper <Download className="h-3 w-3" />
+                  </a>
                 </div>
               </CardContent>
             </Card>
@@ -134,67 +107,6 @@ export default function ResourcesPage() {
               </CardContent>
             </Card>
           </div>
-
-          <Card className="backdrop-blur-sm bg-background/60 shadow-md">
-            <CardHeader>
-              <CardTitle>Open Source Tools</CardTitle>
-              <CardDescription>
-                Libraries and frameworks for experimenting with adversarial machine learning
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-6 md:grid-cols-3">
-                <div>
-                  <h3 className="font-medium">Adversarial Robustness Toolbox (ART)</h3>
-                  <p className="text-sm text-muted-foreground">
-                    A Python library for machine learning security developed by IBM
-                  </p>
-                  <Link
-                    href="https://github.com/Trusted-AI/adversarial-robustness-toolbox"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                  >
-                    GitHub Repository <ExternalLink className="h-3 w-3" />
-                  </Link>
-                </div>
-
-                <div>
-                  <h3 className="font-medium">Foolbox</h3>
-                  <p className="text-sm text-muted-foreground">
-                    A Python toolbox to create adversarial examples that fool neural networks
-                  </p>
-                  <Link
-                    href="https://github.com/bethgelab/foolbox"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                  >
-                    GitHub Repository <ExternalLink className="h-3 w-3" />
-                  </Link>
-                </div>
-
-                <div>
-                  <h3 className="font-medium">RobustBench</h3>
-                  <p className="text-sm text-muted-foreground">A standardized benchmark for adversarial robustness</p>
-                  <Link
-                    href="https://github.com/RobustBench/robustbench"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                  >
-                    GitHub Repository <ExternalLink className="h-3 w-3" />
-                  </Link>
-                </div>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <p className="text-sm text-muted-foreground">
-                These tools are provided for educational and research purposes. Always use them responsibly and
-                ethically.
-              </p>
-            </CardFooter>
-          </Card>
         </div>
       </div>
     </div>
